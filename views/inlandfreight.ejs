@@ -227,18 +227,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </td>
                   <td>
                     <%= charter[i].lowbed %>
-                  </td>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm dropdown-toggle btn-lg active" data-toggle="dropdown"
-                      data-offset="-52" aria-expanded="false">
-                      <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="dropdown-menu" role="menu" style="">
-                      <a href="Editairfreight.html" class="dropdown-item">Edit</a>
-                      <a href="#" class="dropdown-item">Delete</a>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm dropdown-toggle btn-lg active" data-toggle="dropdown"
+                        data-offset="-52" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                      </button>
+                      <div class="dropdown-menu" role="menu" style="">
+                        <a href="Editairfreight.html" class="dropdown-item">Edit</a>
+                        <a href="/inlandfreightdelcharter/<%= charter[i].id %>" class="dropdown-item">Delete</a>
+                      </div>
                     </div>
-                  </div>
                   </td>
+                  
+                  
                 </tr>
                 <% } %>
                   <!-- <tr>
@@ -327,16 +328,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   
                   <td>
                     <%= kg[i].price %>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm dropdown-toggle btn-lg active" data-toggle="dropdown"
+                        data-offset="-52" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                      </button>
+                      <div class="dropdown-menu" role="menu" style="">
+                        <a href="Editairfreight.html" class="dropdown-item">Edit</a>
+                        <a href="/inlandfreightdelkg/<%= kg[i].id %>" class="dropdown-item">Delete</a>
+                      </div>
                   </td>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm dropdown-toggle btn-lg active" data-toggle="dropdown"
-                      data-offset="-52" aria-expanded="false">
-                      <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="dropdown-menu" role="menu" style="">
-                      <a href="Editairfreight.html" class="dropdown-item">Edit</a>
-                      <a href="#" class="dropdown-item">Delete</a>
-                    </div>
+                 
                   </div>
                   </td>
                 </tr>

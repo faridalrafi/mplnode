@@ -10,7 +10,7 @@ exports.NewAirfreight = async (req, res) => {
     }
     console.log(data)
     airf = await Airfreight.create(data)
-    if (airf){
+    if (airf) {
         // res.status(201).json({
         //     status:true,
         //     message: 'new airfreigth data added',
@@ -20,42 +20,88 @@ exports.NewAirfreight = async (req, res) => {
     }
 }
 
-exports.ShowAirfreight = async(req,res)=>{
+exports.ShowAirfreight = async (req, res) => {
     airf = await Airfreight.findAll()
-    
+    console.log(airf)
     res.render('airfreight', { data: airf });
 }
 
-exports.NewSeafright = async(req, res)=>{
+exports.DeleteAirfreight = async (req, res) => {
+    airf = await Airfreight.destroy({
+        where: {
+            id: req.params.id
+        }
+    });
+    if (airf){
+        res.redirect('/airfreight')
+    }
+}
+
+exports.NewSeafright = async (req, res) => {
     seaf = await Seafreight.create(req.body)
-    if(seaf){
+    if (seaf) {
         res.redirect('/seafreight')
     }
 }
 
-exports.ShowSeafreight = async(req,res)=>{
+exports.ShowSeafreight = async (req, res) => {
     seaf = await Seafreight.findAll()
-    
+
     res.render('seafreight', { data: seaf });
 }
 
-exports.Newlandfrightkg = async(req, res)=>{
-    seaf = await  Landfreightkg.create(req.body)
-    if(seaf){
+exports.DeleteSeafreight = async (req, res) => {
+    airf = await Seafreight.destroy({
+        where: {
+            id: req.params.id
+        }
+    });
+    if (airf){
+        res.redirect('/seafreight')
+    }
+}
+
+exports.Newlandfrightkg = async (req, res) => {
+    seaf = await Landfreightkg.create(req.body)
+    if (seaf) {
         res.redirect('/inlandfreight')
     }
 }
 
-exports.Newlandfrightcharter = async(req, res)=>{
+exports.Deletelandfrightkg = async (req, res) => {
+    airf = await Landfreightkg.destroy({
+        where: {
+            id: req.params.id
+        }
+    });
+    if (airf){
+        res.redirect('/inlandfreight')
+    }
+}
+
+exports.Newlandfrightcharter = async (req, res) => {
     seaf = await Landfreightcharter.create(req.body)
-    if(seaf){
+    if (seaf) {
         res.redirect('/inlandfreight')
     }
 }
 
-exports.ShowLandfreight = async(req,res)=>{
-    landfcharter = await  Landfreightcharter.findAll()
-    landfkg = await  Landfreightkg.findAll()
-
-    res.render('inlandfreight', { charter: landfcharter, kg: landfkg});
+exports.Deletelandfrightcharter = async (req, res) => {
+    airf = await Landfreightcharter.destroy({
+        where: {
+            id: req.params.id
+        }
+    });
+    if (airf){
+        res.redirect('/inlandfreight')
+    }
 }
+
+exports.ShowLandfreight = async (req, res) => {
+    landfcharter = await Landfreightcharter.findAll()
+    landfkg = await Landfreightkg.findAll()
+
+    res.render('inlandfreight', { charter: landfcharter, kg: landfkg });
+}
+
+
