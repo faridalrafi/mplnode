@@ -69,19 +69,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="Inlandfreight.html" class="nav-link">
+                <a href="/inlandfreight" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inland Freight</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="Airfreight.html" class="nav-link">
+                <a href="/airfreight" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Air Freight</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="Seafreight.html" class="nav-link">
+                <a href="/seafreight" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sea Freight</p>
                 </a>
@@ -89,13 +89,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="Accountmgt.html" class="nav-link">
+            <a href="/users" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>Account Management</p>
             </a>
           </li>  
           <li class="nav-item">
-            <a href="Loginadmin.html" class="nav-link">
+            <a href="/login" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>Logout</p>
             </a>
@@ -112,32 +112,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="card-header">
         <h3 class="card-title">Edit Air Freight Rates</h3>
         </div>
-        <div class="card-body">
-            <form>
-            <table>
-            <thead>
-            <tr>
-              <th>Origin</th>
-              <th>Destination</th>
-              <th>Estimate Days</th>
-              <th>Price</th>
-            </tr>
-        </thead>
-              <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Origin">
-              </td>
-              <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Destination">
-              </td>
-              <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Estimate Days">
-              </td>
-              <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Price">
-              </td>
-          </table>
-          <p><button type="submit" class="btn-primary btn-sm">SAVE</button></p>
-        </form>
-        </div>
-      </div>
-      <div class="card-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <div class="card-body" id="form1" >
+          <form action="/airfreightupdate/<%= data.id %>" method="POST">
+          <table>
           <thead>
           <tr>
             <th>Origin</th>
@@ -145,37 +122,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <th>Estimate Days</th>
             <th>Price</th>
           </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Jakarta</td>
-              <td>Belawan</td>
-              <td>5</td>
-              <td>35.0000
-                </div>
-              </td>
-              <tr>
-                <td>Jakarta</td>
-                <td>Binjai</td>
-                <td>5</td>
-                <td>30.0000
-                    </div>
-                  </div>
-                </td>
-            </tr>
-            <tr>
-              <td>Jakarta</td>
-              <td>Brastagi</td>
-              <td>6</td>
-              <td>30.0000
-                </div>
-              </td>
-            </tbody>
-            <tfoot>
-            </tfoot>
-          </table>
-      <!-- /.card-body -->
-    </div>
+      </thead>
+            <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Origin" name="origin" value="<%= data.origin %>">
+            </td>
+            <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Destination" name="destination" value="<%= data.destination %>">
+            </td>
+            <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Estimate Days" name="arival" value="<%= data.arival %>">
+            </td>
+            <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Price" name="price" value="<%= data.price %>">
+            </td>
+        </table>
+        <p><button type="submit" class="btn-primary btn-sm">SAVE</button></p>
+      </form>
+      </div>
+      </div>
+      
+
+ 
           <!-- /.col-md-6 -->
         </div>
         <!-- /.row -->

@@ -116,7 +116,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div>
 
       <div class="card-body" id="form1" style="display:none">
-        <form>
+        <form action="/users/add" method="POST">
 
         <table>
         <thead>
@@ -127,17 +127,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <th>Status</th>
         </tr>
     </thead>
-          <td> <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+          <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="username" name="username">
           </td>
-          <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Username">
+          <td> <input type="email" class="form-control" id="exampleInputEmail1" placeholder="email" name="email">
           </td>
-          <td> <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Password">
+          <td> <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Password" name="password">
           </td>
           <td>
-            <select id="inputStatus" class="form-control custom-select">
+            <select id="inputStatus" class="form-control custom-select" name="status">
               <option selected disabled>Select one</option>
-              <option>Admin</option>
-              <option>User</option>
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
             </select>
           </td>
       </table>
@@ -155,90 +155,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </tr>
           </thead>
           <tbody>
+            <% for(var i=0; i < data.length; i++) { %>
             <tr>
-              <td>Admin</td>
-              <td>admin@mplogistik.co.id</td>
-              <td>qwerty123</td>
-              <td>Admin
+              <td><%= data[i].username %></td>
+              <td><%= data[i].email %></td>
+              <td><%= data[i].password %></td>
+              <td><%= data[i].status %>
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm dropdown-toggle btn-lg active" data-toggle="dropdown" data-offset="-52" aria-expanded="false">
                     <i class="fas fa-bars"></i>
                   </button>
                   <div class="dropdown-menu" role="menu" style="">
-                    <a href="Editacc.html" class="dropdown-item">Edit</a>
-                    <a href="#" class="dropdown-item">Delete</a>
+                    <a href="/airfreightupdate/<%= data[i].id %>" class="dropdown-item">Edit</a>
+                    <a href="/airfreightdel/<%= data[i].id %>" class="dropdown-item">Delete</a>
                   </div>
                 </div>
               </td>
             </tr>
-            <tr>
-              <td>User01</td>
-              <td>user1@mplogistik.co.id
-              </td>
-              <td>abcd0</td>
-              <td>Admin
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm dropdown-toggle btn-lg active" data-toggle="dropdown" data-offset="-52" aria-expanded="false">
-                  <i class="fas fa-bars"></i>
-                </button>
-                <div class="dropdown-menu" role="menu" style="">
-                  <a href="Editacc.html" class="dropdown-item">Edit</a>
-                  <a href="#" class="dropdown-item">Delete</a>
-                  </td>
-                </div>
-              </div>
-            </tr>
-            <tr>
-              <td>User02</td>
-              <td>user2@mplogistik.co.id
-              </td>
-              <td>123456</td>
-              <td>User
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm dropdown-toggle btn-lg active" data-toggle="dropdown" data-offset="-52" aria-expanded="false">
-                  <i class="fas fa-bars"></i>
-                </button>
-                <div class="dropdown-menu" role="menu" style="">
-                  <a href="Editacc.html" class="dropdown-item">Edit</a>
-                  <a href="#" class="dropdown-item">Delete</a>
-                </td>
-              </div>
-              </div>
-            </tr>
-            <tr>
-              <td>User03</td>
-              <td>user3@mplogistik.co.id
-              </td>
-              <td>newAcc</td>
-              <td>User
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm dropdown-toggle btn-lg active" data-toggle="dropdown" data-offset="-52" aria-expanded="false">
-                  <i class="fas fa-bars"></i>
-                </button>
-                <div class="dropdown-menu" role="menu" style="">
-                  <a href="Editacc.html" class="dropdown-item">Edit</a>
-                  <a href="#" class="dropdown-item">Delete</a>
-                </td>
-                </div>
-              </div>
-            </tr>
-            <tr>
-              <td>User04</td>
-              <td>user4@mplogistik.co.id</td>
-              <td>Pass0123</td>
-              <td>User
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm dropdown-toggle btn-lg active" data-toggle="dropdown" data-offset="-52" aria-expanded="false">
-                    <i class="fas fa-bars"></i>
-                  </button>
-                  <div class="dropdown-menu" role="menu" style="">
-                    <a href="Editacc.html" class="dropdown-item">Edit</a>
-                    <a href="#" class="dropdown-item">Delete</a>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
+            <% } %>
+       
+            </tbody>
           <tfoot>
           </tfoot>
         </table>

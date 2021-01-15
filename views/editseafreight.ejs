@@ -69,19 +69,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="Inlandfreight.html" class="nav-link">
+                <a href="/inlandfreight" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inland Freight</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="Airfreight.html" class="nav-link">
+                <a href="/airfreight" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Air Freight</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="Seafreight.html" class="nav-link">
+                <a href="/seafreight" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sea Freight</p>
                 </a>
@@ -89,13 +89,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="Accountmgt.html" class="nav-link">
+            <a href="/users" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>Account Management</p>
             </a>
           </li>  
           <li class="nav-item">
-            <a href="Loginadmin.html" class="nav-link">
+            <a href="/login" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>Logout</p>
             </a>
@@ -112,79 +112,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="card-header">
         <h3 class="card-title">Edit Sea Freight Rates</h3>
       </div>
-        <div class="card-body">
-        <form>
-            <table>
-            <thead>
-            <tr>
-              <th>Origin</th>
-              <th>Destination</th>
-              <th>Estimate Days</th>
-              <th>Container 20'</th>
-              <th>Container 40'</th>
-              <th>Per M3/Ton</th>
-            </tr>
-        </thead>
-              <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Origin">
-              </td>
-              <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Destination">
-              </td>
-              <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Estimate Days">
-              </td>
-              <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Container 20">
-              </td>
-              <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Container 40">
-              </td>
-              <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Per M3/Ton">
-              </td>
-          </table>
-          <p><button type="submit" class="btn-primary btn-sm">SAVE</button></p>
-        </form>
-      </div>
-      <div class="card-body">
-        <table id="example1" class="table table-bordered table-striped">
-          <thead>
-          <tr>
-            <th>Origin</th>
-            <th>Destination</th>
-            <th>Estimate Days</th>
-            <th>Container 20'</th>
-            <th>Container 40'</th>
-            <th>Per M3/Ton</th>
-          </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Surabaya</td>
-              <td>Belawan</td>
-              <td>8</td>
-              <td>17.000.000</td>
-              <td>30.600.000</td>
-              <td>944.444
-              </td>
-            </tr>
-            <tr>
-              <td>Surabaya</td>
-              <td>Batu Licin</td>
-              <td>8</td>
-              <td>17.000.000</td>
-              <td>30.600.000</td>
-              <td>944.444
-              </td>
-            </tr>
-            <tr>
-              <td>Jakarta</td>
-              <td>Banyuwangi</td>
-              <td>6</td>
-              <td>12.000.000</td>
-              <td>21.600.000</td>
-              <td>666.667
-              </td>
-            </tr>
-        </tbody>
-          </tfoot>
-        </table>
-      </div>
+      <div class="card-body" id="form1">
+        <form action="/seafreightupdate/<%= data.id %>" method="POST">
+        <table>
+        <thead>
+        <tr>
+          <th>Origin</th>
+          <th>Destination</th>
+          <th>Estimate Days</th>
+          <th>Container 20'</th>
+          <th>Container 40'</th>
+          <th>Per M3/Ton</th>
+        </tr>
+    </thead>
+          <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Origin" name="origin" value="<%= data.origin %>">
+          </td>
+          <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Destination" name="destination" value="<%= data.destination %>">
+          </td>
+          <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Estimate Days" name="arival" value="<%= data.arival %>">
+          </td>
+          <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Container 20" name="container20" value="<%= data.container20 %>">
+          </td>
+          <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Container 40" name="container40" value="<%= data.container40 %>">
+          </td>
+          <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Per M3/Ton" name="m3ton" value="<%= data.m3ton %>">
+          </td>
+      </table>
+      <p><button type="submit" class="btn-primary btn-sm">SAVE</button></p>
+    </form>
+    </div>
+     
       <!-- /.card-body -->
     </div>
           <!-- /.col-md-6 -->
