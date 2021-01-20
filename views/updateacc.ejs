@@ -47,7 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Home Account</span>
     </a>
 
@@ -69,19 +69,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="Inlandfreight.html" class="nav-link">
+                <a href="/inlandfreight" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inland Freight</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="Airfreight.html" class="nav-link">
+                <a href="/airfreight" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Air Freight</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="Seafreight.html" class="nav-link">
+                <a href="/seafreight" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sea Freight</p>
                 </a>
@@ -89,7 +89,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="Accountmgt.html" class="nav-link">
+            <a href="/users" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>Account Management</p>
             </a>
@@ -110,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="content-wrapper">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Add Account</h3>
+            <h3 class="card-title">Update Account</h3>
         </div>
         <div class="card-body">
             <form action="/users/update/<%= data.id %>" method="POST">
