@@ -5,6 +5,22 @@ const freightcontroller = require('../controllers/freightController')
 router.get('/', function(req, res, next) {
   res.render('indexweb', { title: 'Express' });
 });
+router.get('/ourclient', function(req, res, next) {
+  res.render('ourclient', { title: 'Express' });
+});
+router.get('/contact', function(req, res, next) {
+  res.render('contact', { title: 'Express' });
+});
+router.get('/logistic', function(req, res, next) {
+  res.render('logistic', { title: 'Express' });
+});
+
+router.get('/freight', freightcontroller.landingFreight);
+router.post('/inlandf', freightcontroller.landingInlandf)
+router.post('/airf', freightcontroller.landingairf)
+router.post('/seaf', freightcontroller.landingseaf)
+
+
 router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Express' });
 });

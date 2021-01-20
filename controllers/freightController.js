@@ -1,4 +1,6 @@
 //const airfreight = require('../models/airfreight');
+const { Op } = require("sequelize");
+
 const { Airfreight, Landfreightcharter, Landfreightkg, Seafreight } = require('../models');
 
 exports.NewAirfreight = async (req, res) => {
@@ -32,26 +34,26 @@ exports.DeleteAirfreight = async (req, res) => {
             id: req.params.id
         }
     });
-    if (airf){
+    if (airf) {
         res.redirect('/airfreight')
     }
 }
 
-exports.UpdateAirfreightPage = async (req,res)=>{
+exports.UpdateAirfreightPage = async (req, res) => {
     airf = await Airfreight.findOne({ where: { id: req.params.id } })
     res.render('editairfreight', { data: airf });
 }
 
-exports.UpdateAirfreight = async (req, res)=>{
+exports.UpdateAirfreight = async (req, res) => {
     airf = await Airfreight.update(req.body, {
-        where:{
-            id:req.params.id
+        where: {
+            id: req.params.id
         }
     })
-    if (airf){
+    if (airf) {
         res.redirect('/airfreight')
     }
-    
+
 }
 
 exports.NewSeafright = async (req, res) => {
@@ -73,26 +75,26 @@ exports.DeleteSeafreight = async (req, res) => {
             id: req.params.id
         }
     });
-    if (airf){
+    if (airf) {
         res.redirect('/seafreight')
     }
 }
 
-exports.UpdateSeafreightPage = async (req,res)=>{
+exports.UpdateSeafreightPage = async (req, res) => {
     seaf = await Seafreight.findOne({ where: { id: req.params.id } })
     res.render('editseafreight', { data: seaf });
 }
 
-exports.UpdateSeafreight = async (req, res)=>{
+exports.UpdateSeafreight = async (req, res) => {
     seaf = await Seafreight.update(req.body, {
-        where:{
-            id:req.params.id
+        where: {
+            id: req.params.id
         }
     })
-    if (seaf){
+    if (seaf) {
         res.redirect('/seafreight')
     }
-    
+
 }
 
 exports.Newlandfrightkg = async (req, res) => {
@@ -108,7 +110,7 @@ exports.Deletelandfrightkg = async (req, res) => {
             id: req.params.id
         }
     });
-    if (airf){
+    if (airf) {
         res.redirect('/inlandfreight')
     }
 }
@@ -126,7 +128,7 @@ exports.Deletelandfrightcharter = async (req, res) => {
             id: req.params.id
         }
     });
-    if (airf){
+    if (airf) {
         res.redirect('/inlandfreight')
     }
 }
@@ -138,37 +140,118 @@ exports.ShowLandfreight = async (req, res) => {
     res.render('inlandfreight', { charter: landfcharter, kg: landfkg });
 }
 
-exports.UpdateLandfreightPagecharter = async (req,res)=>{
+exports.UpdateLandfreightPagecharter = async (req, res) => {
     landfcharter = await Landfreightcharter.findOne({ where: { id: req.params.id } })
     res.render('editlandfreightcharter', { data: landfcharter });
 }
 
-exports.UpdateLandfreightPagekg = async (req,res)=>{
+exports.UpdateLandfreightPagekg = async (req, res) => {
     landfcharter = await Landfreightkg.findOne({ where: { id: req.params.id } })
     res.render('editlandfreightkg', { data: landfcharter });
 }
 
-exports.UpdateLandfreightkg = async (req, res)=>{
+exports.UpdateLandfreightkg = async (req, res) => {
     seaf = await Landfreightkg.update(req.body, {
-        where:{
-            id:req.params.id
+        where: {
+            id: req.params.id
         }
     })
-    if (seaf){
+    if (seaf) {
         res.redirect('/inlandfreight')
     }
-    
+
 }
 
-exports.UpdateLandfreightcharter = async (req, res)=>{
+exports.UpdateLandfreightcharter = async (req, res) => {
     seaf = await Landfreightcharter.update(req.body, {
-        where:{
-            id:req.params.id
+        where: {
+            id: req.params.id
         }
     })
-    if (seaf){
+    if (seaf) {
         res.redirect('/inlandfreight')
     }
-    
+
 }
 
+exports.landingFreight = async (req, res) => {
+    airf = await Airfreight.findAll()
+    seaf = await Seafreight.findAll()
+    landfcharter = await Landfreightcharter.findAll()
+    landfkg = await Landfreightkg.findAll()
+
+    res.render('freight', { charter: landfcharter, kg: landfkg, airf: airf, seaf: seaf });
+
+}
+
+exports.landingInlandf = async (req, res) => {
+    console.log(req.body)
+    if (req.body.service == 'kg') {
+        landfkg = await Landfreightkg.findOne({
+            where: {
+                [Op.and]: [
+                    { origin: req.body.origin },
+                    { destination: req.body.destination }
+                ]
+            }
+        })
+
+        if (landfkg) {
+            landfkg.harga = landfkg.price * parseInt(req.body.weight)
+            landfkg.weight = parseInt(req.body.weight)
+            console.log(landfkg)
+            res.render('inlandF', { kg: landfkg });
+
+
+        }
+    }
+    else if (req.body.service == "charter") {
+        landfcharter = await Landfreightcharter.findOne({
+            where: {
+                [Op.and]: [
+                    { origin: req.body.origin },
+                    { destination: req.body.destination }
+                ]
+            }
+        })
+        if (landfcharter) {
+            res.render('inlandF', { charter: landfcharter, kg: "" });
+
+
+        }
+    }
+}
+
+exports.landingairf = async (req, res) => {
+    airf = await Airfreight.findOne({
+        where: {
+            [Op.and]: [
+                { origin: req.body.origin },
+                { destination: req.body.destination }
+            ]
+        }
+    })
+    if (airf) {
+        airf.harga = airf.price * parseInt(req.body.weight)
+        airf.weight = parseInt(req.body.weight)
+        res.render('airf', { air: airf });
+
+    }
+}
+
+exports.landingseaf = async (req, res) => {
+    seaf = await Seafreight.findOne({
+        where: {
+            [Op.and]: [
+                { origin: req.body.origin },
+                { destination: req.body.destination }
+            ]
+        }
+    })
+    if (seaf) {
+        seaf.harga = seaf.price * parseInt(req.body.weight)
+        seaf.weight = parseInt(req.body.weight)
+        res.render('seaf', { sea: seaf });
+
+    }
+}
