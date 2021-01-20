@@ -1,5 +1,6 @@
 //const airfreight = require('../models/airfreight');
-const { Op } = require("sequelize");
+const { Op,fn,col } = require("sequelize");
+
 
 const { Airfreight, Landfreightcharter, Landfreightkg, Seafreight } = require('../models');
 
@@ -175,12 +176,35 @@ exports.UpdateLandfreightcharter = async (req, res) => {
 }
 
 exports.landingFreight = async (req, res) => {
-    airf = await Airfreight.findAll()
-    seaf = await Seafreight.findAll()
-    landfcharter = await Landfreightcharter.findAll()
-    landfkg = await Landfreightkg.findAll()
+    airf = await Airfreight.findAll({distinc:'origin',  attributes: [
+        // specify an array where the first element is the SQL function and the second is the alias
+        [fn('DISTINCT', col('origin')) ,'origin']
+    ]})
+    seaf = await Seafreight.findAll({distinc:'origin',  attributes: [
+        // specify an array where the first element is the SQL function and the second is the alias
+        [fn('DISTINCT', col('origin')) ,'origin']
+    ]})
 
-    res.render('freight', { charter: landfcharter, kg: landfkg, airf: airf, seaf: seaf });
+    airfdestination = await Airfreight.findAll({distinc:'destination',  attributes: [
+        // specify an array where the first element is the SQL function and the second is the alias
+        [fn('DISTINCT', col('destination')) ,'destination']
+    ]})
+
+    seafdestination = await Seafreight.findAll({distinc:'destination',  attributes: [
+        // specify an array where the first element is the SQL function and the second is the alias
+        [fn('DISTINCT', col('destination')) ,'destination']
+    ]})
+    landfcharter = await Landfreightcharter.findAll()
+    landfkgorigin = await Landfreightkg.findAll({distinc:'origin',  attributes: [
+        // specify an array where the first element is the SQL function and the second is the alias
+        [fn('DISTINCT', col('origin')) ,'origin']
+    ]})
+    landfkgdestination = await Landfreightkg.findAll({distinc:'destination',  attributes: [
+        // specify an array where the first element is the SQL function and the second is the alias
+        [fn('DISTINCT', col('destination')) ,'destination']
+    ]})
+    console.log(landfkgdestination)
+    res.render('freight', { charter: landfcharter, kg: {origin: landfkgorigin, destination: landfkgdestination}, airf: {origin:airf, destination:airfdestination}, seaf: {origin:seaf,destination:seafdestination} });
 
 }
 
