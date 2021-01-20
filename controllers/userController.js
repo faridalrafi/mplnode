@@ -22,6 +22,36 @@ exports.add = async (req, res) => {
     }
 }
 
+exports.del = async (req, res) => {
+    user = await User.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    if (user) {
+        res.redirect('/users')
+    }
+}
+
+exports.update = async (req, res) => {
+    user = await User.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    })
+    if (user) {
+        res.redirect('/users')
+    }
+}
+exports.updatepage = async(req, res)=>{
+    user = await User.findOne({
+        where:{
+            id: req.params.id
+        }
+    })
+    res.render('updateacc', {data:user});
+}
+
 exports.ShowUser = async (req, res) => {
     user = await User.findAll()
 

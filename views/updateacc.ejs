@@ -48,7 +48,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Brand Logo -->
     <a class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin</span>
+      <span class="brand-text font-weight-light">Home Account</span>
     </a>
 
     <!-- Sidebar -->
@@ -69,19 +69,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/inlandfreight" class="nav-link">
+                <a href="Inlandfreight.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inland Freight</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/airfreight" class="nav-link">
+                <a href="Airfreight.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Air Freight</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/seafreight" class="nav-link">
+                <a href="Seafreight.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sea Freight</p>
                 </a>
@@ -89,13 +89,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="/accountmgt" class="nav-link">
+            <a href="Accountmgt.html" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>Account Management</p>
             </a>
           </li>  
           <li class="nav-item">
-            <a href="/login" class="nav-link">
+            <a href="Loginadmin.html" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>Logout</p>
             </a>
@@ -109,76 +109,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">User List</h3>
-        <a href="#" button type="button" id="addnew" class="btn btn-danger btn-xs ml-1 btn-lg active">
-          <i class="fas fa-plus"></i> ADD NEW </a>
-      </div>
+        <div class="card-header">
+            <h3 class="card-title">Add Account</h3>
+        </div>
+        <div class="card-body">
+            <form action="/users/update/<%= data.id %>" method="POST">
 
-      <div class="card-body" id="form1" style="display:none">
-        <form action="/users/add" method="POST">
-
-        <table>
-        <thead>
-        <tr>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Password</th>
-          <th>Status</th>
-        </tr>
-    </thead>
-          <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="username" name="username">
-          </td>
-          <td> <input type="email" class="form-control" id="exampleInputEmail1" placeholder="email" name="email">
-          </td>
-          <td> <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Password" name="password">
-          </td>
-          <td>
-            <select id="inputStatus" class="form-control custom-select" name="status">
-              <option selected disabled>Select one</option>
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
-            </select>
-          </td>
-      </table>
-      <p><button type="submit" class="btn-primary btn-sm">SAVE</button></p>
-    </form>
-    </div>
-      <div class="card-body">
-        <table id="example1" class="table table-bordered table-striped">
-          <thead>
-          <tr>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Status</th>
-          </tr>
-          </thead>
-          <tbody>
-            <% for(var i=0; i < data.length; i++) { %>
+            <table>
+            <thead>
             <tr>
-              <td><%= data[i].username %></td>
-              <td><%= data[i].email %></td>
-              <td><%= data[i].password %></td>
-              <td><%= data[i].status %>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm dropdown-toggle btn-lg active" data-toggle="dropdown" data-offset="-52" aria-expanded="false">
-                    <i class="fas fa-bars"></i>
-                  </button>
-                  <div class="dropdown-menu" role="menu" style="">
-                    <a href="/users/update/<%= data[i].id %>" class="dropdown-item">Edit</a>
-                    <a href="/users/del/<%= data[i].id %>" class="dropdown-item">Delete</a>
-                  </div>
-                </div>
-              </td>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th>Status</th>
             </tr>
-            <% } %>
+        </thead>
+        <td> <input type="input" class="form-control" id="exampleInputEmail1" placeholder="username" name="username">
+        </td>
+        <td> <input type="email" class="form-control" id="exampleInputEmail1" placeholder="email" name="email">
+        </td>
+        <td> <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Password" name="password">
+        </td>
+              <td>
+                <select name="status" id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>Select one</option>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                </select>
+              </td>
+          </table>
+          <p><button type="submit" class="btn-primary btn-sm">SAVE</button></p>
+        </form>
+        </div>
+   
        
-            </tbody>
-          <tfoot>
-          </tfoot>
-        </table>
-      </div>
+         
       <!-- /.card-body -->
     </div>
           <!-- /.col-md-6 -->
@@ -211,24 +176,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
-<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="/plugins/jszip/jszip.min.js"></script>
-<script src="/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="plugins/jszip/jszip.min.js"></script>
+<script src="plugins/pdfmake/pdfmake.min.js"></script>
+<script src="plugins/pdfmake/vfs_fonts.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/dist/js/adminlte.min.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -245,13 +210,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
     });
   });
 </script>
-
-<script>
-  $( document ).ready( function() {
-   $( "#addnew" ).click( function() {
-     $( "#form1" ).show();
-   });
- });
- </script>
 </body>
 </html>
