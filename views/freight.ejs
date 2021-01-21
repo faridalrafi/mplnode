@@ -11,6 +11,7 @@
     <link rel=stylesheet
         href='https://fonts.googleapis.com/css?family=Assistant%3A200%2C300%2Cregular%2C600%2C700%2C800%7CKarla%3Aregular%2Citalic%2C700%2C700italic%7CPT+Sans%3Aregular%2Citalic%2C700%2C700italic&amp;subset=latin%2Chebrew%2Clatin-ext%2Ccyrillic-ext%2Ccyrillic&amp;ver=5.0.3'
         type=text/css media=all>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel=stylesheet href='/web/plugins/goodlayers-core/plugins/combine/style.css' type=text/css media=all>
     <link rel=stylesheet href='/web/plugins/goodlayers-core/include/css/page-builder.css' type=text/css media=all>
@@ -233,9 +234,9 @@
                                                                 style="margin-top: 30px ;">Services :</span></h3>
                                                     </div>
                                                     <!-- inland -->
-                                                    <div class="card-body">
+                                                    <div class="table-responsive-sm">
                                                         <form action="/inlandf" method="POST" name="inland">
-                                                            <table>
+                                                            <table class="table">
                                                                 <thead>
                                                                     <tr>
                                                                         <th
@@ -289,7 +290,7 @@
                                                                 </td>
                                                             </table>
                                                             <p><button type="submit" class="btn-primary btn-sm"
-                                                                    style="padding: 10px; background-color: #00C853; border-radius: 5px; border: 1px solid white; color: white; width: 5%">SAVE</button>
+                                                                    style="padding: 10px; background-color: #00C853; border-radius: 5px; border: 1px solid white; color: white; width: 25%">SAVE</button>
                                                             </p>
                                                         </form>
                                                     </div>
@@ -392,9 +393,9 @@
                                                         <h3><span class=gdlr-core-space-shortcode
                                                                 style="margin-top: 30px ;">Services :</span></h3>
                                                     </div>
-                                                    <div class="card-body">
+                                                    <div class="table-responsive-sm">
                                                         <form name="air" id="air" action="/airf" method="POST">
-                                                            <table>
+                                                            <table class="table">
                                                                 <thead>
                                                                     <tr>
                                                                         <th
@@ -446,7 +447,7 @@
                                                                 <!--                                                                </td>-->
                                                             </table>
                                                             <p><button type="submit"
-                                                                    style="padding: 10px; background-color: #00C853; border-radius: 5px; border: 1px solid white; color: white; width: 5%">SAVE</button>
+                                                                    style="padding: 10px; background-color: #00C853; border-radius: 5px; border: 1px solid white; color: white; width: 25%">SAVE</button>
                                                             </p>
                                                         </form>
                                                         <div id="dataair"></div>
@@ -557,9 +558,9 @@
                                                         <h3><span class=gdlr-core-space-shortcode
                                                                 style="margin-top: 30px ;">Services :</span></h3>
                                                     </div>
-                                                    <div class="card-body">
+                                                    <div class="table-responsive-sm">
                                                         <form name="sea" action="/seaf" method="POST">
-                                                            <table>
+                                                            <table class="table">
                                                                 <thead>
                                                                     <tr>
                                                                         <th
@@ -612,7 +613,7 @@
                                                                 <!--                                                                </td>-->
                                                             </table>
                                                             <p><button type="submit" class="btn-primary btn-sm"
-                                                                    style="padding: 10px; background-color: #00C853; border-radius: 5px; border: 1px solid white; color: white; width: 5%">SAVE</button>
+                                                                    style="padding: 10px; background-color: #00C853; border-radius: 5px; border: 1px solid white; color: white; width: 25%">SAVE</button>
                                                             </p>
                                                         </form>
 
@@ -754,7 +755,8 @@
             <script type="text/javascript" src="/web/plugins/quform/js/plugins.js"></script>
             <script type="text/javascript" src="/web/plugins/quform/js/scripts.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
             <script>
                 jQuery(".js-example-basic-single").select2();
 
